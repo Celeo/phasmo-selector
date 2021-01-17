@@ -1,0 +1,66 @@
+{
+  "name": "phasmo-selector",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "lint": "eslint src/**/*",
+    "lint:fix": "eslint --fix src/**/*",
+    "format": "prettier --write src",
+    "test": "web-test-runner \"src/**/*.test.js\""
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "svelte": "^3.24.0"
+  },
+  "devDependencies": {
+    "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-svelte": "^3.5.0",
+    "@snowpack/web-test-runner-plugin": "^0.2.0",
+    "@testing-library/svelte": "^3.0.0",
+    "@web/test-runner": "^0.12.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-svelte3": "^3.0.0",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^2.1.0",
+    "snowpack": "^3.0.1"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "src/index.js",
+      "node_modules"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "plugins": [
+      "svelte3"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.svelte"
+        ],
+        "processor": "svelte3/svelte3"
+      }
+    ]
+  }
+}
