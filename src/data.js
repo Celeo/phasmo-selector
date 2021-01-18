@@ -1,10 +1,10 @@
 export const ALL_EVIDENCE = [
-  { short: "box", long: "Spirit Box" },
-  { short: "fingerprints", long: "Fingerprints" },
-  { short: "writing", long: "Book writing" },
-  { short: "orbs", long: "Ghost Orbs" },
   { short: "emf", long: "EMF 5" },
+  { short: "fingerprints", long: "Fingerprints" },
   { short: "freezing", long: "Freezing" },
+  { short: "orbs", long: "Ghost Orbs" },
+  { short: "writing", long: "Book writing" },
+  { short: "box", long: "Spirit Box" },
 ];
 
 export const GHOSTS = [

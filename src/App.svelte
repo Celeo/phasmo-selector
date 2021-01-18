@@ -5,12 +5,22 @@
 
   let possibleGhosts;
   $: if (selected.length === 0) {
-    possibleGhosts = GHOSTS.map((g) => g.name);
+    possibleGhosts = GHOSTS;
   } else {
-    possibleGhosts = GHOSTS.filter((g) => ghostMatches(g, selected)).map(
-      (g) => g.name,
-    );
+    possibleGhosts = GHOSTS.filter((g) => ghostMatches(g, selected));
   }
+
+  $: possibleGhostNames = possibleGhosts.map((g) => g.name);
+
+  $: possibleEvidence = [
+    ...new Set(
+      possibleGhosts
+        .map((g) => g.evidence)
+        .flatMap((e) => Object.entries(e))
+        .filter(([k, v]) => v)
+        .map(([k, v]) => k),
+    ),
+  ];
 
   const toggle = (evidence) => {
     if (selected.indexOf(evidence) !== -1) {
@@ -26,11 +36,12 @@
   <div class="spacer" />
   <table>
     <thead>
-      <tr>
-        <th>Type</th>
+      <tr class="border-bottom">
+        <th />
         {#each ALL_EVIDENCE as evidence}
           <th
             class:selected={selected.indexOf(evidence.short) !== -1}
+            class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
             on:click={() => toggle(evidence.short)}>
             {evidence.long}
           </th>
@@ -40,7 +51,7 @@
     <tbody>
       {#each GHOSTS as ghost}
         <tr>
-          <td class:impossible={possibleGhosts.indexOf(ghost.name) === -1}>
+          <td class:impossible={possibleGhostNames.indexOf(ghost.name) === -1}>
             {ghost.name}
           </td>
           {#each ALL_EVIDENCE as evidence}
@@ -60,6 +71,11 @@
   :global(body) {
     background-color: #191c25;
     color: white;
+    font-size: 120%;
+  }
+
+  h1 {
+    text-align: center;
   }
 
   .container {
@@ -82,11 +98,16 @@
 
   th:not(:first-child) {
     cursor: pointer;
+    border-bottom: 1px solid white;
   }
 
   td {
     text-align: center;
     padding: 1rem;
+  }
+
+  td:first-child {
+    border-right: 1px solid white;
   }
 
   td:not(:first-child) {
