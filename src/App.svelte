@@ -1,5 +1,8 @@
 <script>
   import { ALL_EVIDENCE, GHOSTS, ghostMatches } from "./data.js";
+  import SvelteTooltip from "svelte-tooltip";
+  import Icon from "svelte-awesome";
+  import { questionCircle } from "svelte-awesome/icons";
 
   let selected = [];
 
@@ -52,7 +55,12 @@
       {#each GHOSTS as ghost}
         <tr>
           <td class:impossible={possibleGhostNames.indexOf(ghost.name) === -1}>
-            {ghost.name}
+            <span class="name-spacer">
+              {ghost.name}
+            </span>
+            <SvelteTooltip tip={ghost.description} right>
+              <Icon data={questionCircle} />
+            </SvelteTooltip>
           </td>
           {#each ALL_EVIDENCE as evidence}
             <td
@@ -120,5 +128,9 @@
 
   .selected {
     color: rgb(223, 109, 43);
+  }
+
+  .name-spacer {
+    margin-left: 5px;
   }
 </style>

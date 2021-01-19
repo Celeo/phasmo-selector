@@ -24,7 +24,7 @@ export const GHOSTS = [
   {
     name: "Wraith",
     description:
-      "Can fly, including through walls/lockers/doors. Rarely touches the ground. Have a toxic reaction to salt.",
+      "Usually flies, including through walls/lockers/doors. Toxic reaction to salt.",
     evidence: {
       box: true,
       fingerprints: true,
@@ -75,7 +75,7 @@ export const GHOSTS = [
   {
     name: "Jinn",
     description:
-      "Territorial & fast. Faster when target is far away, except when the location's power supply is off.",
+      "Territorial & fast. Faster when target is far away and power supply is on.",
     evidence: {
       box: true,
       fingerprints: false,
@@ -87,7 +87,7 @@ export const GHOSTS = [
   },
   {
     name: "Mare",
-    description: "Has an increased chance to attack in the dark.",
+    description: "Increased chance to attack in the dark.",
     evidence: {
       box: true,
       fingerprints: false,
@@ -99,8 +99,7 @@ export const GHOSTS = [
   },
   {
     name: "Revenant",
-    description:
-      "Slow, but very fast when hunting. Slows greatly when being hid from.",
+    description: "Very fast when hunting; slows greatly when being hid from.",
     evidence: {
       box: false,
       fingerprints: true,
@@ -126,7 +125,7 @@ export const GHOSTS = [
   {
     name: "Demon",
     description:
-      "Aggressive, and attack more often than other ghosts. Asking a successful question via Ouija board will not lower sanity.",
+      "Aggressive, and attacks more often. Asking a successful question via Ouija board will not lower sanity.",
     evidence: {
       box: true,
       fingerprints: false,
@@ -139,7 +138,7 @@ export const GHOSTS = [
   {
     name: "Yurei",
     description:
-      "Drains peoples' sanity faster than other ghosts. Smudging its room prevents roaming for a long time.",
+      "Drains sanity faster than other ghosts. Smudging its room prevents roaming for a long time.",
     evidence: {
       box: false,
       fingerprints: false,
