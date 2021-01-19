@@ -1,10 +1,19 @@
 <script>
   import { ALL_EVIDENCE, GHOSTS, ghostMatches } from "./data.js";
+  import { onMount } from "svelte";
   import SvelteTooltip from "svelte-tooltip";
   import Icon from "svelte-awesome";
   import { questionCircle } from "svelte-awesome/icons";
 
-  let selected = [];
+  let selected = {};
+
+  const toggle = (evidence) => {
+    if (selected[evidence]) {
+      selected[evidence] = false;
+    } else {
+      selected[evidence] = true;
+    }
+  };
 
   let possibleGhosts;
   $: if (selected.length === 0) {
@@ -25,13 +34,11 @@
     ),
   ];
 
-  const toggle = (evidence) => {
-    if (selected.indexOf(evidence) !== -1) {
-      selected = selected.filter((e) => e !== evidence);
-    } else {
-      selected = [...selected, evidence];
-    }
-  };
+  onMount(() => {
+    ALL_EVIDENCE.forEach((e) => {
+      selected[e.short] = false;
+    });
+  });
 </script>
 
 <div class="container">
@@ -43,7 +50,7 @@
         <th />
         {#each ALL_EVIDENCE as evidence}
           <th
-            class:selected={selected.indexOf(evidence.short) !== -1}
+            class:selected={selected[evidence.short]}
             class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
             on:click={() => toggle(evidence.short)}>
             {evidence.long}
@@ -64,7 +71,7 @@
           </td>
           {#each ALL_EVIDENCE as evidence}
             <td
-              class:selected={selected.indexOf(evidence.short) !== -1}
+              class:selected={selected[evidence.short]}
               on:click={() => toggle(evidence.short)}>
               {ghost.evidence[evidence.short] ? "X" : ""}
             </td>
@@ -128,6 +135,10 @@
 
   .selected {
     color: rgb(223, 109, 43);
+  }
+
+  .deselected {
+    color: red;
   }
 
   .name-spacer {

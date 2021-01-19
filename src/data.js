@@ -164,7 +164,8 @@ export const GHOSTS = [
 ];
 
 export const ghostMatches = (ghost, evidence) => {
-  for (const e of evidence) {
+  const hasEvidence = Object.keys(evidence).filter((k) => evidence[k]);
+  for (const e of hasEvidence) {
     switch (e) {
       case "box": {
         if (!ghost.evidence.box) {
