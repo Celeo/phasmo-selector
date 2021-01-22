@@ -44,6 +44,22 @@
       selected[e.short] = NOT_SELECTED;
     });
   });
+
+  let classForEvidence;
+  $: {
+    classForEvidence = (evidence) => {
+      if (selected[evidence.short] === SELECTED) {
+        return "selected";
+      }
+      if (selected[evidence.short] === IGNORED) {
+        return "deselected";
+      }
+      if (possibleEvidence.indexOf(evidence.short) === -1) {
+        return "impossible";
+      }
+      return "";
+    };
+  }
 </script>
 
 <div class="container">
@@ -53,12 +69,9 @@
     <thead>
       <tr class="border-bottom">
         <th />
-        <!-- Way to simplify this portion? -->
         {#each ALL_EVIDENCE as evidence}
           <th
-            class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
-            class:selected={selected[evidence.short] === SELECTED}
-            class:deselected={selected[evidence.short] === IGNORED}
+            class={classForEvidence(evidence)}
             on:click={() => toggle(evidence.short, MOUSE_LEFT)}
             on:contextmenu|preventDefault={() =>
               toggle(evidence.short, MOUSE_RIGHT)}>
@@ -80,9 +93,7 @@
           </td>
           {#each ALL_EVIDENCE as evidence}
             <td
-              class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
-              class:selected={selected[evidence.short] === SELECTED}
-              class:deselected={selected[evidence.short] === IGNORED}
+              class={classForEvidence(evidence)}
               on:click={() => toggle(evidence.short, MOUSE_LEFT)}
               on:contextmenu|preventDefault={() =>
                 toggle(evidence.short, MOUSE_RIGHT)}>
