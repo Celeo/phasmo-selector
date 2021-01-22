@@ -1,18 +1,23 @@
 <script>
-  import { ALL_EVIDENCE, GHOSTS, ghostMatches } from "./data.js";
   import { onMount } from "svelte";
   import SvelteTooltip from "svelte-tooltip";
   import Icon from "svelte-awesome";
   import { questionCircle } from "svelte-awesome/icons";
+  import {
+    ALL_EVIDENCE,
+    GHOSTS,
+    MOUSE_LEFT,
+    MOUSE_RIGHT,
+    SELECTED,
+    NOT_SELECTED,
+    IGNORED,
+  } from "./data.js";
+  import { toggleSelection, ghostMatches } from "./util";
 
   let selected = {};
 
-  const toggle = (evidence) => {
-    if (selected[evidence]) {
-      selected[evidence] = false;
-    } else {
-      selected[evidence] = true;
-    }
+  const toggle = (evidence, button) => {
+    selected[evidence] = toggleSelection(selected, evidence, button);
   };
 
   let possibleGhosts;
@@ -36,7 +41,7 @@
 
   onMount(() => {
     ALL_EVIDENCE.forEach((e) => {
-      selected[e.short] = false;
+      selected[e.short] = NOT_SELECTED;
     });
   });
 </script>
@@ -50,9 +55,12 @@
         <th />
         {#each ALL_EVIDENCE as evidence}
           <th
-            class:selected={selected[evidence.short]}
             class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
-            on:click={() => toggle(evidence.short)}>
+            class:selected={selected[evidence.short] === SELECTED}
+            class:deselected={selected[evidence.short] === IGNORED}
+            on:click={() => toggle(evidence.short, MOUSE_LEFT)}
+            on:contextmenu|preventDefault={() =>
+              toggle(evidence.short, MOUSE_RIGHT)}>
             {evidence.long}
           </th>
         {/each}
@@ -71,8 +79,11 @@
           </td>
           {#each ALL_EVIDENCE as evidence}
             <td
-              class:selected={selected[evidence.short]}
-              on:click={() => toggle(evidence.short)}>
+              class:selected={selected[evidence.short] === SELECTED}
+              class:deselected={selected[evidence.short] === IGNORED}
+              on:click={() => toggle(evidence.short, MOUSE_LEFT)}
+              on:contextmenu|preventDefault={() =>
+                toggle(evidence.short, MOUSE_RIGHT)}>
               {ghost.evidence[evidence.short] ? "X" : ""}
             </td>
           {/each}
@@ -134,11 +145,11 @@
   }
 
   .selected {
-    color: rgb(223, 109, 43);
+    color: rgb(72, 170, 69);
   }
 
   .deselected {
-    color: red;
+    color: rgb(119, 49, 49);
   }
 
   .name-spacer {

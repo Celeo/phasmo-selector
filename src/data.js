@@ -1,3 +1,10 @@
+export const SELECTED = 0;
+export const NOT_SELECTED = 1;
+export const IGNORED = 2;
+
+export const MOUSE_LEFT = 0;
+export const MOUSE_RIGHT = 1;
+
 export const ALL_EVIDENCE = [
   { short: "emf", long: "EMF 5" },
   { short: "fingerprints", long: "Fingerprints" },
@@ -162,48 +169,3 @@ export const GHOSTS = [
     },
   },
 ];
-
-export const ghostMatches = (ghost, evidence) => {
-  const hasEvidence = Object.keys(evidence).filter((k) => evidence[k]);
-  for (const e of hasEvidence) {
-    switch (e) {
-      case "box": {
-        if (!ghost.evidence.box) {
-          return false;
-        }
-        break;
-      }
-      case "fingerprints": {
-        if (!ghost.evidence.fingerprints) {
-          return false;
-        }
-        break;
-      }
-      case "writing": {
-        if (!ghost.evidence.writing) {
-          return false;
-        }
-        break;
-      }
-      case "orbs": {
-        if (!ghost.evidence.orbs) {
-          return false;
-        }
-        break;
-      }
-      case "emf": {
-        if (!ghost.evidence.emf) {
-          return false;
-        }
-        break;
-      }
-      case "freezing": {
-        if (!ghost.evidence.freezing) {
-          return false;
-        }
-        break;
-      }
-    }
-  }
-  return true;
-};
