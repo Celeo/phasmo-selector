@@ -53,6 +53,7 @@
     <thead>
       <tr class="border-bottom">
         <th />
+        <!-- Way to simplify this portion? -->
         {#each ALL_EVIDENCE as evidence}
           <th
             class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
@@ -79,6 +80,7 @@
           </td>
           {#each ALL_EVIDENCE as evidence}
             <td
+              class:impossible={possibleEvidence.indexOf(evidence.short) === -1}
               class:selected={selected[evidence.short] === SELECTED}
               class:deselected={selected[evidence.short] === IGNORED}
               on:click={() => toggle(evidence.short, MOUSE_LEFT)}
