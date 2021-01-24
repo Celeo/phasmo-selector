@@ -136,7 +136,7 @@
   }
 
   .spacer-more {
-    padding-top: 10vh;
+    padding-top: 5vh;
   }
 
   table {
