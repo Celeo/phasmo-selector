@@ -39,12 +39,6 @@
     ),
   ];
 
-  onMount(() => {
-    ALL_EVIDENCE.forEach((e) => {
-      selected[e.short] = NOT_SELECTED;
-    });
-  });
-
   let classForEvidence;
   $: {
     classForEvidence = (evidence) => {
@@ -60,6 +54,16 @@
       return "";
     };
   }
+
+  const reset = () => {
+    ALL_EVIDENCE.forEach((e) => {
+      selected[e.short] = NOT_SELECTED;
+    });
+  };
+
+  onMount(() => {
+    reset();
+  });
 </script>
 
 <div class="container">
@@ -104,6 +108,10 @@
       {/each}
     </tbody>
   </table>
+  <div class="spacer-more" />
+  <div class="button-bar">
+    <button class="btn-reset" on:click={reset}>Reset</button>
+  </div>
 </div>
 
 <style>
@@ -125,6 +133,10 @@
 
   .spacer {
     padding-top: 1rem;
+  }
+
+  .spacer-more {
+    padding-top: 10vh;
   }
 
   table {
@@ -167,5 +179,26 @@
 
   .name-spacer {
     padding-right: 5px;
+  }
+
+  .button-bar {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-reset {
+    background-color: #191c25;
+    color: white;
+    border: 1px solid white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-grow: 1;
+    height: 3rem;
   }
 </style>
