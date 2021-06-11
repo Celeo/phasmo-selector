@@ -168,4 +168,28 @@ export const GHOSTS = [
       freezing: false,
     },
   },
+  {
+    name: "Yokai",
+    description: "Attracted to and angered by talking.",
+    evidence: {
+      box: true,
+      fingerprints: false,
+      writing: true,
+      orbs: true,
+      emf: false,
+      freezing: false,
+    },
+  },
+  {
+    name: "Hantu",
+    description: "Moves faster in cold areas and slower in warn areas.",
+    evidence: {
+      box: false,
+      fingerprints: true,
+      writing: true,
+      orbs: true,
+      emf: false,
+      freezing: false,
+    },
+  },
 ];
