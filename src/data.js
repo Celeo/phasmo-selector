@@ -12,6 +12,7 @@ export const ALL_EVIDENCE = [
   { short: "orbs", long: "Ghost Orbs" },
   { short: "writing", long: "Book writing" },
   { short: "box", long: "Spirit Box" },
+  { short: "dots", long: "D.O.T.S Projector" },
 ];
 
 export const GHOSTS = [
@@ -21,11 +22,12 @@ export const GHOSTS = [
       "Smudge Sticks will prevent it from attacking for a long time.",
     evidence: {
       box: true,
-      fingerprints: true,
+      fingerprints: false,
       writing: true,
       orbs: false,
-      emf: false,
+      emf: true,
       freezing: false,
+      dots: false,
     },
   },
   {
@@ -34,11 +36,12 @@ export const GHOSTS = [
       "Usually flies, including through walls/lockers/doors. Toxic reaction to salt.",
     evidence: {
       box: true,
-      fingerprints: true,
+      fingerprints: false,
       writing: false,
       orbs: false,
-      emf: false,
-      freezing: true,
+      emf: true,
+      freezing: false,
+      dots: true,
     },
   },
   {
@@ -46,12 +49,13 @@ export const GHOSTS = [
     description:
       "Looking at it will cause large sanity loss. Taking a photo of it will cause it to temporarily disappear.",
     evidence: {
-      box: false,
-      fingerprints: false,
+      box: true,
+      fingerprints: true,
       writing: false,
-      orbs: true,
-      emf: true,
-      freezing: true,
+      orbs: false,
+      emf: false,
+      freezing: false,
+      dots: true,
     },
   },
   {
@@ -60,10 +64,11 @@ export const GHOSTS = [
     evidence: {
       box: true,
       fingerprints: true,
-      writing: false,
-      orbs: true,
+      writing: true,
+      orbs: false,
       emf: false,
       freezing: false,
+      dots: false,
     },
   },
   {
@@ -74,9 +79,10 @@ export const GHOSTS = [
       box: false,
       fingerprints: true,
       writing: false,
-      orbs: false,
-      emf: true,
-      freezing: true,
+      orbs: true,
+      emf: false,
+      freezing: false,
+      dots: true,
     },
   },
   {
@@ -84,12 +90,13 @@ export const GHOSTS = [
     description:
       "Territorial & fast. Faster when target is far away and power supply is on.",
     evidence: {
-      box: true,
-      fingerprints: false,
+      box: false,
+      fingerprints: true,
       writing: false,
-      orbs: true,
+      orbs: false,
       emf: true,
-      freezing: false,
+      freezing: true,
+      dots: false,
     },
   },
   {
@@ -98,10 +105,11 @@ export const GHOSTS = [
     evidence: {
       box: true,
       fingerprints: false,
-      writing: false,
+      writing: true,
       orbs: true,
       emf: false,
-      freezing: true,
+      freezing: false,
+      dots: false,
     },
   },
   {
@@ -109,11 +117,12 @@ export const GHOSTS = [
     description: "Very fast when hunting; slows greatly when being hid from.",
     evidence: {
       box: false,
-      fingerprints: true,
+      fingerprints: false,
       writing: true,
-      orbs: false,
-      emf: true,
-      freezing: false,
+      orbs: true,
+      emf: false,
+      freezing: true,
+      dots: false,
     },
   },
   {
@@ -124,9 +133,10 @@ export const GHOSTS = [
       box: false,
       fingerprints: false,
       writing: true,
-      orbs: true,
+      orbs: false,
       emf: true,
-      freezing: false,
+      freezing: true,
+      dots: false,
     },
   },
   {
@@ -134,12 +144,13 @@ export const GHOSTS = [
     description:
       "Aggressive, and attacks more often. Asking a successful question via Ouija board will not lower sanity.",
     evidence: {
-      box: true,
-      fingerprints: false,
+      box: false,
+      fingerprints: true,
       writing: true,
       orbs: false,
       emf: false,
       freezing: true,
+      dots: false,
     },
   },
   {
@@ -149,10 +160,11 @@ export const GHOSTS = [
     evidence: {
       box: false,
       fingerprints: false,
-      writing: true,
+      writing: false,
       orbs: true,
       emf: false,
       freezing: true,
+      dots: true,
     },
   },
   {
@@ -160,12 +172,13 @@ export const GHOSTS = [
     description:
       "More active when around multiple people. Can rapidly move items.",
     evidence: {
-      box: true,
+      box: false,
       fingerprints: false,
-      writing: true,
-      orbs: false,
-      emf: true,
-      freezing: false,
+      writing: false,
+      orbs: true,
+      emf: false,
+      freezing: true,
+      dots: true,
     },
   },
   {
@@ -174,10 +187,11 @@ export const GHOSTS = [
     evidence: {
       box: true,
       fingerprints: false,
-      writing: true,
+      writing: false,
       orbs: true,
       emf: false,
       freezing: false,
+      dots: true,
     },
   },
   {
@@ -186,10 +200,38 @@ export const GHOSTS = [
     evidence: {
       box: false,
       fingerprints: true,
-      writing: true,
+      writing: false,
       orbs: true,
       emf: false,
+      freezing: true,
+      dots: false,
+    },
+  },
+  {
+    name: "Myling",
+    description: "Quieter when hunting but make more paranormal sounds.",
+    evidence: {
+      box: false,
+      fingerprints: true,
+      writing: true,
+      orbs: false,
+      emf: true,
       freezing: false,
+      dots: false,
+    },
+  },
+  {
+    name: "Goryo",
+    description:
+      "Only shows itself on camera when alone and don't really roam.",
+    evidence: {
+      box: false,
+      fingerprints: true,
+      writing: false,
+      orbs: false,
+      emf: true,
+      freezing: false,
+      dots: true,
     },
   },
 ];
